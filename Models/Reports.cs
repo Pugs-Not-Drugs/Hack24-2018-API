@@ -6,7 +6,7 @@ namespace Hack24_2018_API.Models
 	public class Reports
 	{
 		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
 		public string EstablishmentId { get; set; }

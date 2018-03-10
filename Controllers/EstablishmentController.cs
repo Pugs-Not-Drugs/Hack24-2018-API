@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Hack24_2018_API.Services.Establishment;
 using Hack24_2018_API.ViewModel;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hack24_2018_API.Controllers
 {
-    public class EstablishmentController : Controller
+	public class EstablishmentController : Controller
     {
 		private IEstablishmentService _establishmentService;
 

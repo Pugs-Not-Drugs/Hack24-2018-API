@@ -11,8 +11,8 @@ using System;
 namespace Hack242018API.Migrations
 {
     [DbContext(typeof(EcoNottsDbContext))]
-    [Migration("20180310213953_MakeAllTheThingsWork")]
-    partial class MakeAllTheThingsWork
+    [Migration("20180310230326_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,8 @@ namespace Hack242018API.Migrations
 
             modelBuilder.Entity("Hack24_2018_API.Models.Reports", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("EstablishmentId");
 

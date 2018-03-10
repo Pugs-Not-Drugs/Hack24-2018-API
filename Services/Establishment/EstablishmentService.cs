@@ -1,7 +1,4 @@
 ﻿using Hack24_2018_API.Repositories.Establishment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hack24_2018_API.Services.Establishment

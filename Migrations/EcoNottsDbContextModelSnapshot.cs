@@ -37,7 +37,8 @@ namespace Hack242018API.Migrations
 
             modelBuilder.Entity("Hack24_2018_API.Models.Reports", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("EstablishmentId");
 
