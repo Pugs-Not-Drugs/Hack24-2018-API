@@ -1,19 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+	<TargetFramework>netcoreapp2.0</TargetFramework>
+	<UserSecretsId>41582530-B301-4198-A471-C964AA45C506</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="Migrations\20180310175110_MadeReportsPublic.cs" />
+    <Compile Remove="Migrations\20180310175110_MadeReportsPublic.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+	<Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+	<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+	<PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.1.0-preview" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
+	<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+	<DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
