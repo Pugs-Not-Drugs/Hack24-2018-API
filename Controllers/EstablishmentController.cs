@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hack24_2018_API.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Establishment")]
     public class EstablishmentController : Controller
     {
 		private IEstablishmentService _establishmentService;
@@ -20,11 +18,16 @@ namespace Hack24_2018_API.Controllers
 			_establishmentService = establishmentService;
 		}
 
-		[HttpPost(Name ="Add")]
-		public async Task<IActionResult> Add(EstablishmentReportViewModel model)
+		[HttpPost("api/establishment/add")]
+		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
 		{
-			await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
-			await _establishmentService.AddReport(model.Id, model.Straws);
+			var current = HttpContext.Request;
+
+			if (!string.IsNullOrEmpty(model.Id))
+				return BadRequest();
+
+			//await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
+			//await _establishmentService.AddReport(model.Id, model.Straws);
 
 			return Ok();
 		}

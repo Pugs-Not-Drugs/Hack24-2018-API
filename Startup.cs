@@ -80,6 +80,7 @@ namespace Hack24_2018_API
 			}
 
 			app.UseMvc();
+
 		}
 	}
 }
