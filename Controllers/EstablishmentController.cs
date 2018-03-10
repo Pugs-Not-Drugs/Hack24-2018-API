@@ -21,15 +21,13 @@ namespace Hack24_2018_API.Controllers
 		[HttpPost("api/establishment/add")]
 		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
 		{
-			var current = HttpContext.Request;
-
 			if (!string.IsNullOrEmpty(model.Id))
 				return BadRequest();
 
 			//await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
 			//await _establishmentService.AddReport(model.Id, model.Straws);
 
-			return Ok();
+			return Ok(model);
 		}
     }
 }
