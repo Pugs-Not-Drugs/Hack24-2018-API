@@ -9,9 +9,9 @@ namespace Hack24_2018_API.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int Id { get; set; }
 
-		public int EstablishmentId { get; set; }
+		public string EstablishmentId { get; set; }
 		public Establishment Establishment { get; set; }
 
-		public bool UsesStraws { get; set; }
+		public int UsesStraws { get; set; }
 	}
 }

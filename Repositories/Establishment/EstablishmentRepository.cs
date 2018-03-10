@@ -32,14 +32,14 @@ namespace Hack24_2018_API.Repositories.Establishment
 			_dbContext.Establishments.Remove(model);
 		}
 
-		public async Task<Models.Establishment> Get(int bingId)
+		public async Task<Models.Establishment> Get(string id)
 		{
-			return await _dbContext.Establishments.FindAsync(bingId);
+			return await _dbContext.Establishments.FindAsync(id);
 		}
 
-		public async Task Update(int bingId, Models.Establishment model)
+		public async Task Update(string id, Models.Establishment model)
 		{
-			var existingModel = await Get(bingId);
+			var existingModel = await Get(id);
 
 			existingModel.BusinessName = model.BusinessName;
 			existingModel.Latitude = model.Latitude;

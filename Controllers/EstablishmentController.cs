@@ -24,8 +24,8 @@ namespace Hack24_2018_API.Controllers
 			if (!string.IsNullOrEmpty(model.Id))
 				return BadRequest();
 
-			//await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
-			//await _establishmentService.AddReport(model.Id, model.Straws);
+			await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
+			await _establishmentService.AddReport(model.Id, model.Straws);
 
 			return Ok(model);
 		}

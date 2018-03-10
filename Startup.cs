@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hack24_2018_API.Extensions;
+using Hack24_2018_API.Helpers;
 using Hack24_2018_API.Models;
 using Hack24_2018_API.Repositories.Establishment;
 using Hack24_2018_API.Repositories.Reports;
@@ -56,6 +58,7 @@ namespace Hack24_2018_API
 			services.AddTransient<IReportRepository, ReportRepository>();
 			services.AddTransient<IEstablishmentService, EstablishmentService>();
 			services.AddMvc();
+			services.AddSwagger(CommonHelpers.GetVersionNumber());
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +81,9 @@ namespace Hack24_2018_API
 			{
 				app.UseDeveloperExceptionPage();
 			}
+
+			app.UseSwagger($"/swagger/v{CommonHelpers.GetVersionNumber()}/swagger.json",
+$"dwCheckApi {CommonHelpers.GetVersionNumber()}");
 
 			app.UseMvc();
 

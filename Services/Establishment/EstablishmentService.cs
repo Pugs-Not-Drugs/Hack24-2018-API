@@ -14,7 +14,7 @@ namespace Hack24_2018_API.Services.Establishment
 		{
 			_establishmentRepository = establishmentRepository;
 		}
-		public async Task AddNewEstablishment(int id, string businessName, double latitude, double longitude)
+		public async Task AddNewEstablishment(string id, string businessName, string latitude, string longitude)
 		{
 			var result = await _establishmentRepository.Get(id);
 			if(result == null)
@@ -31,9 +31,9 @@ namespace Hack24_2018_API.Services.Establishment
 			}
 		}
 
-		public async Task AddReport(int bingId, bool usesStraw)
+		public async Task AddReport(string id, int usesStraw)
 		{
-			var result = await _establishmentRepository.Get(bingId);
+			var result = await _establishmentRepository.Get(id);
 
 			if(result != null)
 			{
@@ -44,7 +44,7 @@ namespace Hack24_2018_API.Services.Establishment
 				});
 			}
 
-			await _establishmentRepository.Update(bingId, result);
+			await _establishmentRepository.Update(id, result);
 		}
 	}
 }

@@ -11,9 +11,10 @@ using System;
 namespace Hack242018API.Migrations
 {
     [DbContext(typeof(EcoNottsDbContext))]
-    partial class EcoNottsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180310213953_MakeAllTheThingsWork")]
+    partial class MakeAllTheThingsWork
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
