@@ -17,7 +17,7 @@ namespace Hack24_2018_API.Controllers
 		[HttpPost("api/establishment/add")]
 		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
 		{
-			if (!string.IsNullOrEmpty(model.Id))
+			if (string.IsNullOrEmpty(model.Id))
 				return BadRequest();
 
 			await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
