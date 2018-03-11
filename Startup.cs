@@ -16,23 +16,12 @@ namespace Hack24_2018_API
 {
 	public class Startup
 	{
-		private readonly ILogger _logger;
-
-		public Startup(IHostingEnvironment env, ILogger<Startup> logger)
+		public Startup(IConfiguration configuration)
 		{
-			_logger = logger;
-
-			var builder = new ConfigurationBuilder();
-
-			if (env.IsDevelopment())
-			{
-				builder.AddUserSecrets<Startup>();
-			}
-
-			Configuration = builder.Build();
+			Configuration = configuration;
 		}
 
-		public IConfigurationRoot Configuration { get; }
+		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
