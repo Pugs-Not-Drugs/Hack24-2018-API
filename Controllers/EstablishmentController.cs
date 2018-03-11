@@ -5,8 +5,6 @@ using Hack24_2018_API.Services.Establishment;
 using Hack24_2018_API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Tweetinvi;
-using Tweetinvi.Models;
 
 namespace Hack24_2018_API.Controllers
 {
