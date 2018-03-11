@@ -29,13 +29,6 @@ namespace Hack24_2018_API
 				builder.AddUserSecrets<Startup>();
 			}
 
-			var config = builder.Build();
-
-			builder.AddAzureKeyVault(
-				config["KeyVault:SecretUri"],
-				config["KeyVault:ClientId"],
-				config["KeyVault:ClientSecret"]);
-
 			Configuration = builder.Build();
 		}
 

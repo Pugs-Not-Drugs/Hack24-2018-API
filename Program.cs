@@ -24,6 +24,14 @@ namespace Hack24_2018_API
 						logging.AddConsole();
 						logging.AddDebug();
 					})
+				.ConfigureAppConfiguration((context, config) =>
+					{
+						var builtConfig = config.Build();
+
+						config.AddAzureKeyVault(builtConfig["KeyVault:SecretUri"],
+							builtConfig["KeyVault:ClientId"],
+							builtConfig["KeyVault:ClientSecret"]);
+					})
 				.UseStartup<Startup>()
 				.Build();
 
