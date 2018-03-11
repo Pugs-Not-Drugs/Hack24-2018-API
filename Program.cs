@@ -18,19 +18,6 @@ namespace Hack24_2018_API
 
 		public static IWebHost BuildWebHost(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
-				.ConfigureAppConfiguration((ctx, builder) =>
-				{
-					var keyVaultEndpoint = GetKeyVaultEndpoint();
-					if (!string.IsNullOrEmpty(keyVaultEndpoint))
-					{
-						var azureServiceTokenProvider = new AzureServiceTokenProvider();
-						var keyVaultClient = new KeyVaultClient(
-							new KeyVaultClient.AuthenticationCallback(
-								azureServiceTokenProvider.KeyVaultTokenCallback));
-						builder.AddAzureKeyVault(
-							keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-					}
-				})
 				.ConfigureLogging((hostingContext, logging) =>
 					{
 						logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
