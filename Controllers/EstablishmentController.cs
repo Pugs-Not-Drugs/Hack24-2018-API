@@ -47,7 +47,7 @@ namespace Hack24_2018_API.Controllers
 			var result = new List<AllEstablishmentsViewModel>();
 			var establishmnets = await _establishmentService.All();
 
-			var top = establishmnets.Where(e => e.Reports.Count >= 10).OrderBy(e => ((float)e.Reports.Count(r => r.UsesStraws == 0) / (float)e.Reports.Count()) * 100).Take(5).ToList();
+			var top = establishmnets.Where(e => e.Reports.Count >= 3).OrderBy(e => ((float)e.Reports.Count(r => r.UsesStraws == 0) / (float)e.Reports.Count()) * 100).Take(5).ToList();
 
 			top.ForEach(x => result.Add(new AllEstablishmentsViewModel
 			{
