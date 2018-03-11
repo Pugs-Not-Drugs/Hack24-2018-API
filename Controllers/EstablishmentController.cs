@@ -86,21 +86,11 @@ namespace Hack24_2018_API.Controllers
 		[HttpPost("api/establishment/add")]
 		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
 		{
-			var creds = new TwitterCredentials(_configuration["ConsumerKey"], _configuration["ConsumerSecret"], _configuration["AccessToken"], _configuration["AccessTokenSecret"]);
-
 			if (string.IsNullOrEmpty(model.Id))
 				return BadRequest();
 
 			await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
 			await _establishmentService.AddReport(model.Id, model.Straws);
-
-			var tweet = Auth.ExecuteOperationWithCredentials(creds, () =>
-			{
-				if(model.Straws == 1) 
-					return Tweet.PublishTweet($"Shame! {model.Name} in Nottingham are still using plastic straws :( #refusethestraw #hack24 #savetheturtles");
-
-				return Tweet.PublishTweet($"Another one bites the dust! {model.Name} in Nottingham are no longer using plastic straws #refusethestraw #hack24 #savetheturtles");
-			});
 
 			return Ok(model);
 		}
