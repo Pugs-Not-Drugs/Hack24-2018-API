@@ -32,7 +32,8 @@ namespace Hack24_2018_API.Repositories.Establishment
 
 		public async Task<Models.Establishment> Get(string id)
 		{
-			return await _dbContext.Establishments.FindAsync(id);
+			return await _dbContext.Establishments.Include(establishment => establishment.Reports)
+				.FirstOrDefaultAsync(e => e.Id == id);
 		}
 
 		public async Task Update(string id, Models.Establishment model)

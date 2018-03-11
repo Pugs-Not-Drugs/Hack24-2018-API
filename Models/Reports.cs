@@ -10,7 +10,6 @@ namespace Hack24_2018_API.Models
 		public int Id { get; set; }
 
 		public string EstablishmentId { get; set; }
-		public Establishment Establishment { get; set; }
 
 		public int UsesStraws { get; set; }
 	}

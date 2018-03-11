@@ -30,6 +30,11 @@ namespace Hack24_2018_API.Services.Establishment
 			}
 		}
 
+		public async Task<Models.Establishment> Get(string id)
+		{
+			return await _establishmentRepository.Get(id);
+		}
+
 		public async Task AddReport(string id, int usesStraw)
 		{
 			var result = await _establishmentRepository.Get(id);

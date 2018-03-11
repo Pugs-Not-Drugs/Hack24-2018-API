@@ -58,6 +58,26 @@ namespace Hack24_2018_API.Controllers
 			return Ok(result);
 		}
 
+		[HttpGet("api/establishment/{id}")]
+		public async Task<IActionResult> Get(string id)
+		{
+			var result = await _establishmentService.Get(id);
+
+			if (result == null)
+				return NotFound();
+
+			return Ok(new AllEstablishmentsViewModel
+			{
+				Id = result.Id,
+				Name = result.BusinessName,
+				Longitude = result.Longitude,
+				Latitude = result.Latitude,
+				HappyStraws = result.Reports.Count(r => r.UsesStraws == 0),
+				SadStraws = result.Reports.Count(r => r.UsesStraws == 1)
+			});
+		}
+
+
 		[HttpPost("api/establishment/add")]
 		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
 		{
