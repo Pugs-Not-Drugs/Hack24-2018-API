@@ -60,18 +60,6 @@ namespace Hack24_2018_API
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			try
-			{
-				using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-				.CreateScope())
-				{
-					serviceScope.ServiceProvider.GetService<EcoNottsDbContext>().Database.Migrate();
-				}
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex, "Failed to migrate or seed database");
-			}
 
 			if (env.IsDevelopment())
 			{
