@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Hack24_2018_API.Controllers
 {
 	[Route("api/[controller]")]
     public class ValuesController : Controller
     {
+		private readonly IConfiguration _config;
+
+		public ValuesController(IConfiguration config)
+		{
+			_config = config;
+		}
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { _config["DBUsername"], _config["DBPassword"] };
         }
 
         // GET api/values/5
