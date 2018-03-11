@@ -1,4 +1,6 @@
-﻿using Hack24_2018_API.Repositories.Establishment;
+﻿using Hack24_2018_API.Models;
+using Hack24_2018_API.Repositories.Establishment;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hack24_2018_API.Services.Establishment
@@ -42,6 +44,11 @@ namespace Hack24_2018_API.Services.Establishment
 			}
 
 			await _establishmentRepository.Update(id, result);
+		}
+
+		public async Task<IEnumerable<Models.Establishment>> All()
+		{
+			return await _establishmentRepository.All();
 		}
 	}
 }

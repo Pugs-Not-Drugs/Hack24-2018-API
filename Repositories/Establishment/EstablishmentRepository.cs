@@ -22,7 +22,7 @@ namespace Hack24_2018_API.Repositories.Establishment
 
 		public async Task<IEnumerable<Models.Establishment>> All()
 		{
-			return await _dbContext.Establishments.ToListAsync().ConfigureAwait(false);
+			return await _dbContext.Establishments.Include(establishment => establishment.Reports).ToListAsync().ConfigureAwait(false);
 		}
 
 		public void Delete(Models.Establishment model)

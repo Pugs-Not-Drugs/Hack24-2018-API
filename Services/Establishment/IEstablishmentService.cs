@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Hack24_2018_API.Services.Establishment
 {
@@ -6,5 +8,6 @@ namespace Hack24_2018_API.Services.Establishment
 	{
 		Task AddNewEstablishment(string id, string businessName, string latitude, string longitude);
 		Task AddReport(string id, int usesStraw);
+		Task<IEnumerable<Models.Establishment>> All();
 	}
 }
