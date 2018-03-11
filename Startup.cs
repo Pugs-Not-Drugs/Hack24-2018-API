@@ -5,6 +5,7 @@ using Hack24_2018_API.Models;
 using Hack24_2018_API.Repositories.Establishment;
 using Hack24_2018_API.Repositories.Reports;
 using Hack24_2018_API.Services.Establishment;
+using Hack24_2018_API.Services.Report;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,7 @@ namespace Hack24_2018_API
 			services.AddTransient<IEstablishmentRepository, EstablishmentRepository>();
 			services.AddTransient<IReportRepository, ReportRepository>();
 			services.AddTransient<IEstablishmentService, EstablishmentService>();
+			services.AddTransient<IReportService, ReportService>();
 			services.AddMvc();
 			services.AddSwagger(CommonHelpers.GetVersionNumber());
 		}
