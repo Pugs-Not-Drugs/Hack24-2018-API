@@ -38,16 +38,36 @@ namespace Hack24_2018_API.Controllers
 			return Ok(result);
 		}
 
-	[HttpPost("api/establishment/add")]
-	public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
-	{
-		if (string.IsNullOrEmpty(model.Id))
-			return BadRequest();
+		[HttpGet("api/establishment/top")]
+		public async Task<IActionResult> Top()
+		{
+			var result = new List<AllEstablishmentsViewModel>();
+			var establishmnets = await _establishmentService.All();
 
-		await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
-		await _establishmentService.AddReport(model.Id, model.Straws);
+			var top = establishmnets.OrderBy(e => ((float)e.Reports.Count(r => r.UsesStraws == 0) / (float)e.Reports.Count()) * 100).Take(5).ToList();
 
-		return Ok(model);
+			top.ForEach(x => result.Add(new AllEstablishmentsViewModel
+			{
+				Id = x.Id,
+				Name = x.BusinessName,
+				Latitude = x.Latitude,
+				Longitude = x.Longitude,
+				Percentage = ((float)x.Reports.Count(r => r.UsesStraws == 0) / (float) x.Reports.Count()) * 100
+			}));
+
+			return Ok(result);
+		}
+
+		[HttpPost("api/establishment/add")]
+		public async Task<IActionResult> AddEstablishment(EstablishmentReportViewModel model)
+		{
+			if (string.IsNullOrEmpty(model.Id))
+				return BadRequest();
+
+			await _establishmentService.AddNewEstablishment(model.Id, model.Name, model.Latitude, model.Longitude);
+			await _establishmentService.AddReport(model.Id, model.Straws);
+
+			return Ok(model);
+		}
 	}
-}
 }

@@ -13,5 +13,6 @@ namespace Hack24_2018_API.ViewModel
 		public string Latitude { get; set; }
 		public int HappyStraws { get; set; }
 		public int SadStraws { get; set; }
+		public float Percentage { get; set; }
 	}
 }
